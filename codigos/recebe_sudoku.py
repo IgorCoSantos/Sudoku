@@ -9,21 +9,36 @@ def exibe_matriz(matriz):
     """
     n = len(matriz[0])
     m = len(matriz)
+    tam = 0
+
+    for x in range (1, m+1):
+
+        if x == 1:
+            print(' '*4, end = '')
+            print(f'{' '*2}{x}', end = '')
+        elif x == m:
+            print(f'{' '*2}{x}', end = '\n')
+        else:
+            print(f'{' '*2}{x}', end = '')
+
+    print(f'{' '*4}{'='*(3*m)}{'='*2}')
 
     for i in range (0,n):
-        print()
-        
+
         for j in range (0,m):
 
             if j == 0:
                 print(f'{i+1}', end = '  |  ')
 
             if j == m-1:
-                print(f'{matriz[i][j]}', end = '  |')
+                print(f'{matriz[i][j]}', end = '  |\n')
             else:
                 print(f'{matriz[i][j]}', end = '  ')
 
+            if i == n-1:
+                tam += (len(str(matriz[i][j])) + 2)
 
+    print(f'{' '*4}{'='*(3*m)}{'='*2}')
 
 def cria_matriz(n = 9, m = 9):
     """
@@ -33,7 +48,7 @@ def cria_matriz(n = 9, m = 9):
     n = número de linhas 
     m = número de colunas
 
-    retorno - retorna a matriz com os valores de cada célula definidos como ij.
+    retorno - retorna a matriz 
     """
 
     matriz = []
@@ -42,7 +57,7 @@ def cria_matriz(n = 9, m = 9):
     for i in range (0,n):
 
         for j in range (0,m):
-            vetor.append(((i + 1) * 10) + (j + 1))
+            vetor.append((j + 1))
 
         matriz.append(vetor[:])
         vetor.clear()
