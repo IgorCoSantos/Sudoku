@@ -75,11 +75,18 @@ def cria_matriz(n = 9, m = 9):
 
 def fundo_branco(texto, end = '\n'):
 
-    print(f'\033[47m {texto} \033[0m', end = end)
+    from colorama import Back, Style
+
+    print(Back.WHITE + f'{texto}', end = end + Style.RESET_ALL)
 
 
-#fundo_branco(f'teste', '  ')
+fundo_branco(f'teste', '  ')
+# print('teste')
 
 
-matriz = cria_matriz()
-exibe_matriz(matriz)
+# print(Back.WHITE + 'Este texto tem um fundo amarelo!' + Style.RESET_ALL)
+# print(Back.WHITE + f'{'teste'}'+ Style.RESET_ALL)
+
+
+# matriz = cria_matriz()
+# exibe_matriz(matriz)
