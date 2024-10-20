@@ -18,8 +18,10 @@ def exibe_matriz(matriz):
         if x == 1:
             print(' '*4, end = '')
             print(f'{' '*2}{x}', end = '')
+
         elif x == m:
             print(f'{' '*2}{x}', end = '\n')
+
         else:
             print(f'{' '*2}{x}', end = '')
 
@@ -34,12 +36,42 @@ def exibe_matriz(matriz):
             # Legenda das linhas (parte esquerda)
 
             if j == 0:
-                print(f'{i+1}', end = '  |  ')
+                print(f'{i+1}', end = '  | ')
+
+                if i in [0,1,2,6,7,8]:
+                    fundo_branco('', ' ')
+                else:
+                    print(f'', end = ' ')
             
-            if j == m-1:
-                print(f'{matriz[i][j]}', end = '  |\n')
+            if i in [0,1,2] and j in [0,1,2]\
+            or i in [0,1,2] and j in [6,7,8]\
+            or i in [3,4,5] and j in [3,4,5]\
+            or i in [6,7,8] and j in [0,1,2]\
+            or i in [6,7,8] and j in [6,7,8]:
+
+                #new
+                if j == m-1:
+                    fundo_branco(matriz[i][j], ' ')
+                    print(' |')
+
+                elif j == 5 or j==2:
+                    fundo_branco(matriz[i][j], ' ')
+                    print(f'', end = ' ')
+
+                else:
+                    fundo_branco(matriz[i][j], '  ')
+
             else:
-                print(f'{matriz[i][j]}', end = '  ')
+
+                if j == m-1:
+                    print(f'{matriz[i][j]}', end = '  |\n')
+
+                elif j in [2,5]:
+                    print(f'{matriz[i][j]}', end = ' ')
+                    fundo_branco('', ' ')
+
+                else:
+                    print(f'{matriz[i][j]}', end = '  ')
 
             if i == n-1:
                 tam += (len(str(matriz[i][j])) + 2)
@@ -80,7 +112,7 @@ def fundo_branco(texto, end = '\n'):
     print(Back.WHITE + f'{texto}', end = end + Style.RESET_ALL)
 
 
-fundo_branco(f'teste', '  ')
+# fundo_branco(f'teste', '  ')
 # print('teste')
 
 
@@ -88,5 +120,5 @@ fundo_branco(f'teste', '  ')
 # print(Back.WHITE + f'{'teste'}'+ Style.RESET_ALL)
 
 
-# matriz = cria_matriz()
-# exibe_matriz(matriz)
+matriz = cria_matriz()
+exibe_matriz(matriz)
