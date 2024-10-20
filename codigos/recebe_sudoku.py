@@ -11,6 +11,8 @@ def exibe_matriz(matriz):
     m = len(matriz)
     tam = 0
 
+    # Legenda das colunas (parte superior)
+
     for x in range (1, m+1):
 
         if x == 1:
@@ -23,13 +25,17 @@ def exibe_matriz(matriz):
 
     print(f'{' '*4}{'='*(3*m)}{'='*2}')
 
+    #Exibição da matriz
+
     for i in range (0,n):
 
         for j in range (0,m):
 
+            # Legenda das linhas (parte esquerda)
+
             if j == 0:
                 print(f'{i+1}', end = '  |  ')
-
+            
             if j == m-1:
                 print(f'{matriz[i][j]}', end = '  |\n')
             else:
@@ -38,9 +44,12 @@ def exibe_matriz(matriz):
             if i == n-1:
                 tam += (len(str(matriz[i][j])) + 2)
 
+    # Legenda das colunas (parte superior)
+
     print(f'{' '*4}{'='*(3*m)}{'='*2}')
 
 def cria_matriz(n = 9, m = 9):
+
     """
     Obj -   Construir uma matriz n x m
 
@@ -64,7 +73,12 @@ def cria_matriz(n = 9, m = 9):
     
     return matriz
 
+def fundo_branco(texto, end = '\n'):
 
+    print(f'\033[47m {texto} \033[0m', end = end)
+
+
+#fundo_branco(f'teste', '  ')
 
 
 matriz = cria_matriz()
