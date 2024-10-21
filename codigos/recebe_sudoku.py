@@ -80,7 +80,7 @@ def exibe_matriz(matriz):
 
     print(f'{' '*4}{'='*(3*m)}{'='*2}')
 
-def cria_matriz(n = 9, m = 9):
+def cria_matriz(n = 9, m = 9, x = 1):
 
     """
     Obj -   Construir uma matriz n x m
@@ -98,7 +98,7 @@ def cria_matriz(n = 9, m = 9):
     for i in range (0,n):
 
         for j in range (0,m):
-            vetor.append((j + 1))
+            vetor.append((j + 1)*x)
 
         matriz.append(vetor[:])
         vetor.clear()
@@ -106,19 +106,51 @@ def cria_matriz(n = 9, m = 9):
     return matriz
 
 def fundo_branco(texto, end = '\n'):
+    '''
+    Obj - alterar a cor do fundo do texto para branco
 
+    parâmetros
+    texto - texto a ser exibido com fundo branco
+    end - fim de texto
+
+    retorno - print do texto com fundo branco
+    '''
     from colorama import Back, Style
 
     print(Back.WHITE + f'{texto}', end = end + Style.RESET_ALL)
 
-
-# fundo_branco(f'teste', '  ')
-# print('teste')
+def inp_matriz():
 
 
-# print(Back.WHITE + 'Este texto tem um fundo amarelo!' + Style.RESET_ALL)
-# print(Back.WHITE + f'{'teste'}'+ Style.RESET_ALL)
+    import os
+    from validacao import val_zero_um, val_int
+
+    matriz = cria_matriz(x = 0)
 
 
-matriz = cria_matriz()
-exibe_matriz(matriz)
+    while True:
+        
+        exibe_matriz(matriz)
+
+        x = int(input('Digite 1 para continuar e 0 para sair: '))
+
+        val_zero_um(x)
+
+        if x == 0:
+            print('Esquema do sudoku finalizado\n')
+            break
+
+        c = val_int(input('Qual o número da coluna: '))
+        l = int(input('Qual o número da linha: '))
+        v = int(input('Qual o valor da célula: '))
+
+        matriz[l-1][c-1] = v
+        os.system('cls')
+
+    return matriz
+     
+
+matriz = inp_matriz()
+
+# matriz = cria_matriz(x = 0)
+# exibe_matriz(matriz)
