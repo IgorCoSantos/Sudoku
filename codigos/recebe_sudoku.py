@@ -1,3 +1,45 @@
+def fundo_branco(texto, end = '\n'):
+    '''
+    Obj - alterar a cor do fundo do texto para branco
+
+    parâmetros
+    texto - texto a ser exibido com fundo branco
+    end - fim de texto
+
+    retorno - print do texto com fundo branco
+    '''
+    from colorama import Back, Style
+
+    print(Back.WHITE + f'{texto}', end = end + Style.RESET_ALL)
+
+def tam_matriz_lin(matriz):
+    """
+    verifica a quantidade de linhas da matriz
+
+    Args:
+        matriz (listas aninhadas): matriz bidimensional
+
+    Returns:
+        n: quantidade de linhas
+    """
+    n = len(matriz[0])
+
+    return n
+
+def tam_matriz_col(matriz):
+    """
+    verifica a quantidade de colunas da matriz
+
+    Args:
+        matriz (listas aninhadas): matriz bidimensional
+
+    Returns:
+        n: quantidade de colunas
+    """
+    m = len(matriz)
+    
+    return m
+
 def exibe_matriz(matriz):
     """
     Obj - exibir a matriz na forma expandida
@@ -96,32 +138,22 @@ def cria_matriz(n = 9, m = 9, x = 1):
     vetor = []
 
     for i in range (0,n):
-
+        vetor = []
         for j in range (0,m):
             vetor.append((j + 1)*x)
 
-        matriz.append(vetor[:])
-        vetor.clear()
+        matriz.append(vetor)
+        
     
     return matriz
 
-def fundo_branco(texto, end = '\n'):
-    '''
-    Obj - alterar a cor do fundo do texto para branco
-
-    parâmetros
-    texto - texto a ser exibido com fundo branco
-    end - fim de texto
-
-    retorno - print do texto com fundo branco
-    '''
-    from colorama import Back, Style
-
-    print(Back.WHITE + f'{texto}', end = end + Style.RESET_ALL)
-
 def inp_matriz():
+    """
+    Permite a customização dos valores de uma matriz bidimensional 9 x 9
 
-
+    Returns:
+        matriz: retorna a matriz com os valores atualizados
+    """
     import os
     from validacao import val_zero_um, val_int
 
@@ -150,19 +182,5 @@ def inp_matriz():
 
     return matriz
 
-def tam_matriz_lin(matriz):
-
-    n = len(matriz[0])
-
-    return n
-
-def tam_matriz_col(matriz):
-
-    m = len(matriz)
-    
-    return m
-
 matriz = inp_matriz()
 
-# matriz = cria_matriz(x = 0)
-# exibe_matriz(matriz)

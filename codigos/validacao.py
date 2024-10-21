@@ -1,7 +1,12 @@
 def val_zero_um(x): 
+    """
+    Valida a inserção de um int sendo 0 ou 1
 
-        while True:
-            try:
+    Args:
+        x : valor a ser validado
+    """
+    while True:
+        try:
                   
                 if x not in [0,1]:
                     x = int(input('Valor inválido, digite 0 ou 1: '))
@@ -9,11 +14,21 @@ def val_zero_um(x):
                     break 
                     
 
-            except:
+        except:
                 x = int(input('Valor inválido, digite 0 ou 1: '))
 
+
 def val_int(x, lista = 'vazio.teste'):
-     
+    """
+    valida um valor inteiro dentro de uma lista de possíveis opções
+
+    Args:
+        x : Valor a ser validado
+        lista (lista): Lista com os valores permitidos para a variável a ser analisada (x). Defaults to 'vazio.teste'.
+
+    Returns:
+        x : Retorna um valor selecionado pelo usuário e dentro das condições definidas
+    """
     while True:     
         
         try:
