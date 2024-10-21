@@ -7,8 +7,8 @@ def exibe_matriz(matriz):
 
     retorno - print da matriz em sua forma expandida
     """
-    n = len(matriz[0])
-    m = len(matriz)
+    n = tam_matriz_col(matriz)
+    m = tam_matriz_lin(matriz)
     tam = 0
 
     # Legenda das colunas (parte superior)
@@ -126,13 +126,14 @@ def inp_matriz():
     from validacao import val_zero_um, val_int
 
     matriz = cria_matriz(x = 0)
-
+    m = tam_matriz_col(matriz)
+    n = tam_matriz_lin(matriz)
 
     while True:
         
         exibe_matriz(matriz)
 
-        x = int(input('Digite 1 para continuar e 0 para sair: '))
+        x = val_int(input('Digite 1 para continuar e 0 para sair: '),[0,1])
 
         val_zero_um(x)
 
@@ -140,15 +141,26 @@ def inp_matriz():
             print('Esquema do sudoku finalizado\n')
             break
 
-        c = val_int(input('Qual o número da coluna: '))
-        l = int(input('Qual o número da linha: '))
-        v = int(input('Qual o valor da célula: '))
+        c = val_int(input('Qual o número da coluna: '), list(range(1,m+1)))
+        l = val_int(input('Qual o número da linha: '), list(range(1,n+1)))
+        v = val_int(input('Qual o valor da célula (1 - 9): '), list(range(1,10)))
 
         matriz[l-1][c-1] = v
         os.system('cls')
 
     return matriz
-     
+
+def tam_matriz_lin(matriz):
+
+    n = len(matriz[0])
+
+    return n
+
+def tam_matriz_col(matriz):
+
+    m = len(matriz)
+    
+    return m
 
 matriz = inp_matriz()
 

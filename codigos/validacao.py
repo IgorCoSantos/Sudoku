@@ -34,10 +34,9 @@ def val_int(x, lista = 'vazio.teste'):
                 x = input('Você digitou um valor decimal. Digite um valor inteiro válido: ')
 
         except:
+    
             x = input('Você digitou um valor não númerico. Digite um valor inteiro válido: ')
-
-            
-val_int(input('Digite x: '), [1,2,3])
+    return x
 
 
 
